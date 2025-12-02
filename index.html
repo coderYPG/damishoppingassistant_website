@@ -3,14 +3,384 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>大咪购物助手 - 极简返佣工具</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            color: white;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            background: white;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .app-name {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .download-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .download-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 30px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .download-btn.secondary {
+            background: #2196F3;
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+        }
+
+        .download-btn.secondary:hover {
+            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-desc {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .how-it-works {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0 auto 20px;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .step-desc {
+            color: #666;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            color: white;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .app-name {
+                font-size: 2.5rem;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .download-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="hello-title">Hello World</h1>
-        <p class="welcome-text">欢迎来到我的静态网站！</p>
-        <div class="decoration-box"></div>
-    </div>
+<div class="container">
+    <header class="header">
+        <div class="logo">
+            <img src="app-icon.png" alt="大咪购物助手"/>
+        </div>
+        <h1 class="app-name">大咪购物助手</h1>
+        <p class="tagline">极简返佣工具，让省钱变得毫不费力</p>
+    </header>
+
+    <section class="download-section">
+        <h2 class="download-title">立即下载体验</h2>
+        <div class="download-buttons">
+            <a href="#" class="download-btn" onclick="downloadAPK()">
+                <span>📱</span>
+                <span>Android APK 下载</span>
+            </a>
+            <a href="#" class="download-btn secondary" onclick="downloadFromStore()">
+                <span>🛒</span>
+                <span>应用商店下载</span>
+            </a>
+        </div>
+        <p style="color: #666; font-size: 0.9rem;">
+            支持 Android 5.0 及以上版本 • 应用大小约 15MB
+        </p>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3 class="feature-title">极简触发</h3>
+            <p class="feature-desc">分享或截屏即可触发转链，操作步骤从5步减少到1步，转链时间控制在3秒内完成</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3 class="feature-title">透明可信</h3>
+            <p class="feature-desc">转链前查看预估佣金，下单后清晰呈现订单状态和结算时间，让每一分返佣都有据可查</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🔄</div>
+            <h3 class="feature-title">无缝衔接</h3>
+            <p class="feature-desc">转链后自动跳转回京东App，不打断购物决策和下单节奏，真正做到"无感知"返佣</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">💰</div>
+            <h3 class="feature-title">便捷提现</h3>
+            <p class="feature-desc">累积满10元即可通过微信公众号快速提现，资金流转安全可控，返佣真正转化为收入</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3 class="feature-title">轻量实用</h3>
+            <p class="feature-desc">专注核心返佣功能，无广告干扰，界面清爽高效，让工具回归工具本质</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3 class="feature-title">微信登录</h3>
+            <p class="feature-desc">一键微信授权登录，订单和佣金数据云端同步，换设备也能轻松恢复</p>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <h2 class="section-title">如何使用</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3 class="step-title">下载安装</h3>
+                <p class="step-desc">下载大咪购物助手并完成微信登录</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3 class="step-title">浏览商品</h3>
+                <p class="step-desc">在京东App中找到心仪的商品</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3 class="step-title">分享转链</h3>
+                <p class="step-desc">点击分享按钮选择"大咪购物助手"，或截屏自动触发转链</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3 class="step-title">完成下单</h3>
+                <p class="step-desc">自动跳转回京东继续完成下单，返佣自动记录</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <h3 class="step-title">查看佣金</h3>
+                <p class="step-desc">在大咪购物助手中查看订单状态和累积佣金</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <h3 class="step-title">提现收益</h3>
+                <p class="step-desc">满10元即可通过微信公众号快速提现</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 大咪购物助手. 让网购返佣回归本质</p>
+        <p style="margin-top: 10px; font-size: 0.9rem;">
+            客服邮箱: support@xiaomishopping.com | 微信公众号: 大咪购物助手提现
+        </p>
+    </footer>
+</div>
+
+<script>
+    function downloadAPK() {
+        // 模拟APK下载
+        alert('正在准备APK下载...\n\n如无法自动下载，请手动复制以下链接到浏览器:\nhttps://download.xiaomishopping.com/app-release.apk');
+
+        // 实际项目中这里应该是真实的APK下载链接
+        // window.location.href = 'https://download.xiaomishopping.com/app-release.apk';
+    }
+
+    function downloadFromStore() {
+        // 模拟应用商店下载
+        alert('正在跳转到应用商店...\n\n目前支持以下应用商店:\n• 华为应用市场\n• 小米应用商店\n• 应用宝\n• 360手机助手\n\n如未自动跳转，请手动搜索"大咪购物助手"');
+
+        // 实际项目中这里应该是真实的应用商店链接
+        // window.location.href = 'market://details?id=com.xiaomishopping.assistant';
+    }
+
+    // 页面加载动画
+    document.addEventListener('DOMContentLoaded', function () {
+        const cards = document.querySelectorAll('.feature-card');
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.6s ease';
+
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100);
+            }, index * 100);
+        });
+    });
+</script>
 </body>
 </html>

@@ -1,0 +1,97 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 容器样式 */
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 60px 80px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 标题样式 */
+.hello-title {
+    font-size: 4rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease-out;
+}
+
+/* 欢迎文本样式 */
+.welcome-text {
+    font-size: 1.5rem;
+    color: #f0f0f0;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+/* 装饰盒子 */
+.decoration-box {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: rotate 3s linear infinite;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 50px;
+        margin: 20px;
+    }
+
+    .hello-title {
+        font-size: 3rem;
+    }
+
+    .welcome-text {
+        font-size: 1.2rem;
+    }
+
+    .decoration-box {
+        width: 80px;
+        height: 80px;
+    }
+}

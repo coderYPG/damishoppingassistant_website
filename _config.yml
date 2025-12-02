@@ -1,0 +1,21 @@
+# GitHub Pages Configuration
+title: "大咪购物助手"
+description: "极简返佣工具，让省钱变得毫不费力"
+baseurl: ""
+url: "https://coderypg.github.io"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Exclude from processing
+exclude:
+  - .gitignore
+  - .idea/
+  - wrangler.jsonc
+  - README.md
+
+# Include files
+include:
+  - app-icon.png
